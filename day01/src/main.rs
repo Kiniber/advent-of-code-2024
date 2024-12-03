@@ -29,4 +29,26 @@ fn main() {
     println!("Here is the result: \n\n{:?}",result_list);
     let total = result_list.iter().sum::<i32>();
     println!("Here is the total distance: {total}");
+
+    iter2 = list2.iter();
+    let mut nextNumberOption2 = iter2.next();
+    let similarity = list1.iter().map(|number1| {
+        let mut counter = 0;
+        while let Some(next_number2) = nextNumberOption2 {
+            match next_number2 {
+                n2 if n2 < number1 => {
+                    nextNumberOption2 = iter2.next();
+                }
+                n2 if n2 == number1 => {
+                    counter+=1;
+                    nextNumberOption2 = iter2.next();
+                },
+                _ => {
+                    break;
+                }
+            }
+        }
+        counter * number1
+    }).sum::<i32>();
+    println!("Here is the total similarity: {similarity}");
 }
