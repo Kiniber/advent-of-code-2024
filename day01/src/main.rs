@@ -31,17 +31,17 @@ fn main() {
     println!("Here is the total distance: {total}");
 
     iter2 = list2.iter();
-    let mut nextNumberOption2 = iter2.next();
+    let mut next_number_option2 = iter2.next();
     let similarity = list1.iter().map(|number1| {
         let mut counter = 0;
-        while let Some(next_number2) = nextNumberOption2 {
+        while let Some(next_number2) = next_number_option2 {
             match next_number2 {
                 n2 if n2 < number1 => {
-                    nextNumberOption2 = iter2.next();
+                    next_number_option2 = iter2.next();
                 }
                 n2 if n2 == number1 => {
                     counter+=1;
-                    nextNumberOption2 = iter2.next();
+                    next_number_option2 = iter2.next();
                 },
                 _ => {
                     break;
