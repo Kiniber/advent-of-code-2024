@@ -18,17 +18,17 @@ fn main() -> Result<()> {
     println!("Onwards with Part 2 of the riddle");
     
     let valid_parts_regex_string = r"(?xs)
-            # We ignore all whitespace and allow comments in the regex, s=allow . to capture <LF>
-    (?:     # non capturing group
-    \A      # The beginning of the heystack
-    |       # or
+              # We ignore all whitespace and allow comments in the regex, s=allow . to capture <LF>
+    (?:       # non capturing group
+    \A        # The beginning of the heystack
+    |         # or
     do\(\)    # do()
     )
     (?<part_of_interest>.*?)     # the part that we are interested in .*? = not greedy
-    (?:     # non capturing group
+    (?:       # non capturing group
     don't\(\) # don't()
-    |       # or
-    \z      # the end of the heystack
+    |         # or
+    \z        # the end of the heystack
     )";
     let valid_parts_regex = Regex::new(valid_parts_regex_string)?;
     let remaining_input = valid_parts_regex.captures_iter(&input).map(|captured_part|
